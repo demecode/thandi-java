@@ -20,14 +20,12 @@ public class CustomerConfig {
                             1L,
                             "kanye",
                             LocalDate.of(1993, MARCH, 1),
-                            29,
                             "glmxao@yahoo.com"
 
             );
             Customer anna = new Customer(
                     "Anna",
                     LocalDate.of(1989, MARCH, 1),
-                    29,
                     "glmxao@yahoo.com"
             );
 

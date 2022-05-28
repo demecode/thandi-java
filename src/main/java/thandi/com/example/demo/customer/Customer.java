@@ -2,6 +2,7 @@ package thandi.com.example.demo.customer;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.Period;
 
 // need to add the entity tag, table tag & sequence generator / value to map to the database
 @Entity
@@ -22,24 +23,24 @@ public class Customer {
     private Long id;
     private String name;
     private LocalDate dob;
+
+    @Transient // will not be column in database
     private Integer age;
     private String email;
 
     public Customer() {
     }
 
-    public Customer(Long id, String name, LocalDate dob, Integer age, String email) {
+    public Customer(Long id, String name, LocalDate dob, String email) {
         this.id = id;
         this.name = name;
         this.dob = dob;
-        this.age = age;
         this.email = email;
     }
 
-    public Customer(String name, LocalDate dob, Integer age, String email) {
+    public Customer(String name, LocalDate dob, String email) {
         this.name = name;
         this.dob = dob;
-        this.age = age;
         this.email = email;
     }
 
@@ -56,7 +57,7 @@ public class Customer {
     }
 
     public Integer getAge() {
-        return age;
+        return Period.between(this.dob, LocalDate.now()).getYears();
     }
 
     public String getEmail() {
