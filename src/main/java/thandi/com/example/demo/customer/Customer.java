@@ -1,8 +1,24 @@
 package thandi.com.example.demo.customer;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+// need to add the entity tag, table tag & sequence generator / value to map to the database
+@Entity
+@Table
 public class Customer {
+
+    @Id
+    @SequenceGenerator(
+            name = "customer_sequence",
+            sequenceName = "customer_sequence",
+            allocationSize = 1
+    )
+
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator =  "customer_sequence"
+    )
     private Long id;
     private String name;
     private LocalDate dob;
