@@ -3,9 +3,7 @@ package thandi.com.example.demo.customer;
 // all api resources belong in this file
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +24,17 @@ public class CustomerController {
     @GetMapping
     public List<Customer> getCustomers() {
         return customerService.getCustomers();
+    }
+
+    @PostMapping
+    public void registerNewCustomer(@RequestBody Customer customer){
+        customerService.addNewCustomer(customer);
+    }
+
+    @DeleteMapping(path="{customerId}")
+    public void deleteCustomer(@PathVariable("customerId") Long customerId){
+        customerService.deleteCustomer(customerId);
+
+
     }
 }
