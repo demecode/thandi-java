@@ -17,7 +17,8 @@ public class CustomerController {
     private final CustomerService customerService;
 
 
-    @Autowired
+    @Autowired // autowired ensure the customer service object is inserted in the customer
+        // controller method - example of dependency injection
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
